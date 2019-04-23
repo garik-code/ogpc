@@ -36,7 +36,7 @@
   app.get('/mifengcha/:token/:start/:end', urlencodedParser, (req, res) => Mifengcha.ohlcv(req.params.token, req.params.start, req.params.end)
   .then(data => res.send(data), err => {
     console.log(err)
-    res.send('err get coinmarketcap')
+    res.send('err get mifengcha')
   }))
 
   app.listen(3123)
