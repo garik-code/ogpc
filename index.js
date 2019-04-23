@@ -18,32 +18,20 @@
 
 
 
-  const request = require('request')
   const express = require('express')
   const bodyParser = require('body-parser')
 
-  const Proxy = require('./lib/proxy')
   const Coinmarketcap = require('./lib/coinmarketcap')
   const Mifengcha = require('./lib/mifengcha')
 
   const app = express()
   const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-  app.get('/:token/:start/:end', urlencodedParser, (req, res) => {
-    let proxy = Proxy.get()
-    console.log(`proxy: ${proxy}`);
-    console.log(`https://coinmarketcap.com/currencies/${req.params.token}/historical-data/?start=${req.params.start}&end=${req.params.end}`)
-    request.get({
-        url: `https://coinmarketcap.com/currencies/${req.params.token}/historical-data/?start=${req.params.start}&end=${req.params.end}`,
-        // proxy: `socks5://${proxy}`
-    }, (err, page) => {
-        if (err) {
-            res.send(err)
-        } else {
-            res.send(page.body)
-        }
-    })
-  })
+  app.get('/:token/:start/:end', urlencodedParser, (req, res) => Coinmarketcap.ohlcv(req.params.token, req.params.start, req.params.end)
+  .then(data => res.send(data), err => {
+    console.log(err)
+    res.send('err get coinmarketcap')
+  }))
 
   app.get('/mifengcha/history/:token/:end', urlencodedParser, (req, res) => {
     let proxy = proxyGet()
