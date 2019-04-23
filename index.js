@@ -35,7 +35,7 @@
     console.log(`https://coinmarketcap.com/currencies/${req.params.token}/historical-data/?start=${req.params.start}&end=${req.params.end}`)
     request.get({
         url: `https://coinmarketcap.com/currencies/${req.params.token}/historical-data/?start=${req.params.start}&end=${req.params.end}`,
-        proxy: `socks5://${proxy}`
+        // proxy: `socks5://${proxy}`
     }, (err, page) => {
         if (err) {
             res.send(err)
@@ -52,7 +52,7 @@
     console.log(`https://data.mifengcha.com/api/v2/price/history?symbol_name=${req.params.token}&start=&end=${req.params.end}`)
     request.get({
         url: `https://data.mifengcha.com/api/v2/price/history?symbol_name=${req.params.token}&start=${req.params.start}&end=${req.params.end}`,
-        proxy: `socks5://${proxy}`
+        // proxy: `socks5://${proxy}`
     }, (err, page) => {
         if (err) {
             res.send(err)

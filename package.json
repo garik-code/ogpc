@@ -1,0 +1,28 @@
+{
+  "name": "OGPC",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garik-code/ohlcv.git"
+  },
+  "author": "garik-code",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "fast-csv": "^2.4.1",
+    "request": "^2.88.0"
+  },
+  "bugs": {
+    "url": "https://github.com/garik-code/ohlcv/issues"
+  },
+  "homepage": "https://github.com/garik-code/ohlcv#readme"
+}
