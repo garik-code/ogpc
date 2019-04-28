@@ -23,6 +23,7 @@
 
   const Coinmarketcap = require('./lib/coinmarketcap')
   const Mifengcha = require('./lib/mifengcha')
+  const Cryptocompare = require('./lib/cryptocompare')
 
   const app = express()
   const urlencodedParser = bodyParser.urlencoded({ extended: false })
@@ -37,6 +38,12 @@
   .then(data => res.send(data), err => {
     console.log(err)
     res.send('err get mifengcha')
+  }))
+
+  app.get('/cryptocompare/:fsym/:tsym/:limit', urlencodedParser, (req, res) => Cryptocompare.ohlcv(req.params.fsym, req.params.tsym, req.params.limit)
+  .then(data => res.send(data), err => {
+    console.log(err)
+    res.send('err get cryptocompare')
   }))
 
   app.listen(3123)
